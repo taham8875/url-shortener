@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
  
+
+html {
+  @apply bg-slate-950 text-white;
+}
