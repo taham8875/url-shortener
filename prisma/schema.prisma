@@ -11,10 +11,17 @@ datasource db {
     relationMode = "prisma"
 }
 
-model Example {
+model ShortenedUrl {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    original  String   @unique
+    slug      String   @unique
+    clicks    Int      @default(0)
+    user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId    String?
+
+    @@index([userId])
 }
 
 // Necessary for Next auth
@@ -34,6 +41,7 @@ model Account {
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
+    @@index([userId])
 }
 
 model Session {
@@ -42,16 +50,19 @@ model Session {
     userId       String
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
 }
 
 model User {
-    id            String    @id @default(cuid())
+    id            String         @id @default(cuid())
     name          String?
-    email         String?   @unique
+    email         String?        @unique
     emailVerified DateTime?
     image         String?
     accounts      Account[]
     sessions      Session[]
+    ShortenedUrl  ShortenedUrl[]
 }
 
 model VerificationToken {
