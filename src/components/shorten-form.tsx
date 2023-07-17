@@ -1,9 +1,19 @@
 import { GetServerSideProps } from "next";
 
+const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  // console log the text user entered
+
+  console.log(e.currentTarget[0].value);
+};
+
 const ShortenForm = () => {
   return (
     <div className="flex items-center justify-center">
-      <form className="flex items-center justify-center rounded-l-lg ">
+      <form
+        onSubmit={submitHandler}
+        className="flex items-center justify-center rounded-l-lg "
+      >
         <input
           type="text"
           className="w-96 rounded-l-lg bg-slate-950 px-4 py-2  ring-2 ring-slate-700 focus:outline-none"
