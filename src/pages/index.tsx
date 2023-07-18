@@ -2,6 +2,7 @@ import Head from "next/head";
 import Navbar from "~/components/navbar";
 import MainHeading from "~/components/main-heading";
 import ShortenForm from "~/components/shorten-form";
+import RecentUrls from "~/components/recent-urls";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <div className="container mx-auto">
           <MainHeading />
           <ShortenForm />
+          <RecentUrls />
         </div>
       </div>
     </>

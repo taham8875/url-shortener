@@ -21,6 +21,7 @@ model ShortenedUrl {
     user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId    String?
 
+    @@unique([id])
     @@index([userId])
 }
 

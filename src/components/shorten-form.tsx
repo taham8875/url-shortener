@@ -3,7 +3,12 @@ import { useState } from "react";
 import { api } from "~/utils/api";
 
 const ShortenForm = () => {
-  const createShortUrl = api.shortenedUrl.create.useMutation();
+  const createShortUrl = api.shortenedUrl.create.useMutation({
+    onSuccess: (data) => {
+      console.log(data);
+      setInputValue("");
+    },
+  });
 
   const [inputValue, setInputValue] = useState("");
   const [warningMessage, setWarningMessage] = useState("");
@@ -17,6 +22,7 @@ const ShortenForm = () => {
       setWarningMessage("Please enter a valid URL");
     } else {
       setWarningMessage("");
+      createShortUrl.mutate({ url: inputValue });
     }
   };
 
