@@ -14,7 +14,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://url-shortner-blue.vercel.app/"
+  <a href="https://t3us.vercel.app/"
     ><img
       alt="Demo"
       src="https://img.shields.io/badge/demo-online-green.svg?style=flat-square"
@@ -23,8 +23,8 @@
 </p>
 
 <p align="center" style="font-family: monospace">
-  <a href="https://url-shortner-blue.vercel.app/"
-    >https://url-shortner-blue.vercel.app/
+  <a href="https://t3us.vercel.app/"
+    >https://t3us.vercel.app/
     </a>
 </p>
 
