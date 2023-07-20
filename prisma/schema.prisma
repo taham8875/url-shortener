@@ -15,7 +15,7 @@ model ShortenedUrl {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    original  String   @unique
+    original  String
     slug      String   @unique
     clicks    Int      @default(0)
     user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)

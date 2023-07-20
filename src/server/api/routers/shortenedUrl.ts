@@ -16,17 +16,21 @@ export const shortenedUrlRouter = createTRPCRouter({
           slug: input.slug,
         },
       });
-      if (!url) {
-        return {
-          originalUrl: null,
-        };
+      if (url) {
+        await ctx.prisma.shortenedUrl.update({
+          where: {
+            slug: input.slug,
+          },
+          data: {
+            clicks: url.clicks + 1,
+          },
+        });
+        return url.original;
       }
-      return {
-        originalUrl: url.original,
-      };
+      return null;
     }),
 
-  getShortenedUrl: publicProcedure
+  getShortenedUrls: protectedProcedure
     .input(
       z.object({
         limit: z.number().optional(),
@@ -35,7 +39,11 @@ export const shortenedUrlRouter = createTRPCRouter({
     )
     .query(async ({ input, ctx }) => {
       const { limit = 10, cursor } = input;
+      const userId = ctx.session.user.id;
       const urls = await ctx.prisma.shortenedUrl.findMany({
+        where: {
+          userId,
+        },
         take: limit + 1,
         cursor: cursor ? { id: cursor.id } : undefined,
         orderBy: { createdAt: "desc" },
@@ -45,8 +53,10 @@ export const shortenedUrlRouter = createTRPCRouter({
           original: true,
           createdAt: true,
           clicks: true,
+          userId: true,
         },
       });
+
 
       let nextCursor: typeof cursor | undefined;
       if (urls.length > limit) {
@@ -60,7 +70,7 @@ export const shortenedUrlRouter = createTRPCRouter({
       };
     }),
 
-  create: publicProcedure
+  create: protectedProcedure
     .input(z.object({ url: z.string() }))
     .mutation(async ({ input, ctx }) => {
       let slug = crypto.randomBytes(3).toString("hex");
@@ -84,24 +94,13 @@ export const shortenedUrlRouter = createTRPCRouter({
         data: {
           slug: slug,
           original: input.url,
+          userId: ctx.session.user.id,
         },
       });
       return newUrl;
     }),
 
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
-
-  getAll: publicProcedure.query(({ ctx }) => {
+  getAll: protectedProcedure.query(({ ctx }) => {
     return ctx.prisma.shortenedUrl.findMany();
-  }),
-
-  getSecretMessage: protectedProcedure.query(() => {
-    return "you can now see this secret message!";
   }),
 });

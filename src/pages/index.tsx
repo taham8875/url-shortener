@@ -3,8 +3,12 @@ import Navbar from "~/components/navbar";
 import MainHeading from "~/components/main-heading";
 import ShortenForm from "~/components/shorten-form";
 import RecentUrls from "~/components/recent-urls";
+import { useSession } from "next-auth/react";
+import AskToLogin from "~/components/ask-to-login";
 
 export default function Home() {
+  const session = useSession();
+  const user = session.data?.user;
   return (
     <>
       <Head>
@@ -16,8 +20,14 @@ export default function Home() {
         <Navbar />
         <div className="container mx-auto">
           <MainHeading />
-          <ShortenForm />
-          <RecentUrls />
+          {user ? (
+            <>
+              <ShortenForm />
+              <RecentUrls />
+            </>
+          ) : (
+            <AskToLogin />
+          )}
         </div>
       </div>
     </>

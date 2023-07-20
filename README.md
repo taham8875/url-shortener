@@ -1,28 +1,88 @@
-# Create T3 App
+<p align="center">
+  <picture>
+  <img src="./public/logo.svg" width="130" alt="Logo for URL shortner">
+</picture>
+  <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/t3-oss/create-t3-app/99286f37324330ecdf75132fae1f246440a88035/www/public/images/t3-light.svg">
+  <img src="https://raw.githubusercontent.com/t3-oss/create-t3-app/99286f37324330ecdf75132fae1f246440a88035/www/public/images/t3-dark.svg" width="130" alt="Logo for T3">
+</picture>
+</p>
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+<h1 align="center">
+ Url Shortner Powered By the T3 Stack
 
-## What's next? How do I make an app with this?
+</h1>
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+<p align="center">
+  <a href="https://url-shortner-blue.vercel.app/"
+    ><img
+      alt="Demo"
+      src="https://img.shields.io/badge/demo-online-green.svg?style=flat-square"
+    />
+    </a>
+</p>
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+<p align="center" style="font-family: monospace">
+  <a href="https://url-shortner-blue.vercel.app/"
+    >https://url-shortner-blue.vercel.app/
+    </a>
+</p>
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+---
 
-## Learn More
+## 🧐 What's inside?
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+`url-shortener` is a free open source project built with the T3 Stack. It is a simple service allows you to shorten any URL and keep tracking of the number of clicks on your URL. It is built with the following technologies:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+- ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+- ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+- ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
+- ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- ![tRPC](https://img.shields.io/badge/tRPC-%232596BE.svg?style=for-the-badge&logo=tRPC&logoColor=white)
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+Database Provider:
 
-## How do I deploy this?
+- ![PlanetScale](https://img.shields.io/badge/planetscale-%23000000.svg?style=for-the-badge&logo=planetscale&logoColor=white)
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+Deployment:
+
+- ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
+## 📸 Demo
+
+## 🚀 Quick start
+
+1.  **Clone the repo.**
+
+    ```shell
+    git clone https://github.com/t3-oss/create-t3-app.git
+    ```
+
+2.  **Install dependencies.**
+
+    ```shell
+    cd url-shortner
+    npm install
+    ```
+
+3.  **Start developing.**
+
+    ```shell
+    npm run dev
+    ```
+
+    Your site is now running at `http://localhost:3000`!
+
+4.  **Open the source code and start editing!**
+
+## 📝 TBD
+
+- [ ] Add Light/Dark Mode
+- [ ] Add Authentication with Google, facebook and email-password authenticaion.
+- [ ] Add User Dashboard
+- [ ] Enable user to create custom short url
+- [ ] Enable user to delete short url
+- [ ] Enable user to revoke short url
+- [ ] Add react table
+- [ ] Infinite scroll instead of load more button
+- [ ] Add comments to code
