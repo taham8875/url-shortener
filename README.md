@@ -86,3 +86,4 @@ Deployment:
 - [ ] Add react table
 - [ ] Infinite scroll instead of load more button
 - [ ] Add comments to code
+- [ ] Break the code into smaller components
